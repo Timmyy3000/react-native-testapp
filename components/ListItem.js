@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons as Icon } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   listItem: {
@@ -28,7 +28,7 @@ const ListItem = ({ item, deleteItem }) => {
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
         <Text style={styles.listItemText}>{item.text}</Text>
-        <Icon name="close" size={20} color="firebrick" onPress = {() => deleteItem(item.id)}/>
+        <FontAwesome name="close" size={20} color="firebrick" onPress = {() => deleteItem(item.id)}/>
       </View>
     </TouchableOpacity>
   );

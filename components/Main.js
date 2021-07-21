@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, FlatList} from 'react-native';
+import { View, Text, StyleSheet, FlatList, Alert} from 'react-native';
 import uuid from 'react-native-uuid';
 import Header from './Header';
 import ListItem from '../components/ListItem'
+import AddItem from './AddItem';
 
 const styles = StyleSheet.create({
    
@@ -31,6 +32,21 @@ const Main = ({ title }) => {
     };
 
 
+    const addItem = (text) => {
+
+        if (!text) {
+            Alert.alert(
+                "Error", 'Please enter an item',[{text : 'Ok', style : "cancel"}]
+              )
+        } else {
+            setItems(prevItems => {
+            return [{id : uuid.v4(), text}, ...prevItems];
+        })
+        }
+        
+    };
+
+
     return (
         <View >
             <Header title = "Shopping List" />
@@ -42,6 +58,7 @@ const Main = ({ title }) => {
                 )}
 
             />
+            <AddItem  addItem = {addItem}/>
         </View>
     );
 }
